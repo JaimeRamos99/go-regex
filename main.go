@@ -2,23 +2,35 @@ package main
 
 import (
 	"fmt"
+	"os"
 	"regexp"
+	"strconv"
 )
 
 func main() {
 
-	fmt.Print("Enter text: ")
-	var input string
-	fmt.Scanln(&input)
+	// Se toma por comando el string a ingresar y el entero X correspondiente a la cantidad de decimales
+	input := os.Args[2]
+	n := os.Args[3]
 
-	fmt.Print("Enter number: ")
-	var n int
+	if i, err := strconv.Atoi(n); err == nil {
 
-	fmt.Scan(&n)
-	response := fmt.Sprintf(`^[0-9]+(?:\.\d{%d,%d})?$`, n, n)
-	//cadena = fmt.Sprintf(`[-]?\d[\d]*[\.](\d{%d})`)
-	re := regexp.MustCompile(response)
+		// Expresión regular
+		response := fmt.Sprintf(`^[0-9]+(?:\.\d{%d,%d})?$`, i, i)
 
-	fmt.Printf("Contiene  %v\n", re.FindString(input)) // True
+		re := regexp.MustCompile(response)
+
+		if re.FindString(input) == "" {
+			fmt.Printf("No es un número real o no tiene la cantidad exacta de %d decimales", i)
+		} else {
+			if i == 1 {
+				fmt.Printf(" %v Es un numero real con %d decimal", re.FindString(input), i)
+			} else {
+				fmt.Printf(" %v Es un numero real con %d decimales", re.FindString(input), i) // True
+			}
+
+		}
+
+	}
 
 }
