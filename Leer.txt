@@ -1,0 +1,8 @@
+Lenguaje: Go
+Temas:
+11. Validar una matrícula de un vehículo con formato XXXNNN, donde X es una
+letra y N es un dígito. En total hay seis caracteres.
+
+12. Validar número real con x decimales. Debe configurar el número de decimales
+como parámetro de entrada.
+
