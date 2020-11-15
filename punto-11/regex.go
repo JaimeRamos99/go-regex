@@ -8,8 +8,8 @@ func eval_pattern(pattern string) string{
 
   if match {
     return "SI puede ser una placa"
-  } else {
-    return "NO puede ser una placa"
   }
+  return "NO puede ser una placa"
+
 
 }
