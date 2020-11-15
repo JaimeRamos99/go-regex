@@ -4,7 +4,7 @@ import (
 )
 func eval_pattern(pattern string) string{
 
-  match, _ := regexp.MatchString("([a-z][a-z][a-z][0-9][0-9][0-9])", pattern)
+  match, _ := regexp.MatchString("^[a-z]{3}[0-9]{3}$", pattern)
 
   if match {
     return "SI puede ser una placa"
