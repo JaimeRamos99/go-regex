@@ -18,7 +18,7 @@ func main() {
   //Getting only the args we are interested in
   car_plates := os.Args[1:]
 
-  //creates an instance of color blue
+  //creates an instance of color yellow
   colorYellow := "\033[33m"
   colorReset := "\033[0m"
 
