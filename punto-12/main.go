@@ -46,7 +46,7 @@ func main() {
 			verificarDecimal := regexp.MustCompile(decimal)
 
 			if verificarDecimal.FindString(input) == "" {
-				fmt.Printf("No tiene la cantidad exacta de %d decimales", i)
+				fmt.Printf("No tiene la cantidad exacta de %d decimales o no coincide con la estructura de un número real", i)
 			} else {
 
 				if len(input) == 1 && i != 0 {
