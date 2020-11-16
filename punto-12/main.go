@@ -9,6 +9,8 @@ import (
 	"strings"
 )
 
+var colorYellow = "\033[33m"
+var colorReset = "\033[0m"
 //function that asks the user how many decimals is going to use the regexp
 func ask_precision_decimals() int {
 
@@ -17,7 +19,7 @@ func ask_precision_decimals() int {
 		scanner := bufio.NewScanner(os.Stdin)
 		scanner.Scan()
 	  line := scanner.Text()
-		n_args :=len(strings.Fields(line))
+		n_args := len(strings.Fields(line))
 
 		if n_args == 1{
 
@@ -39,8 +41,8 @@ func ask_precision_decimals() int {
 //function that asks the users for the numbers to validate if meets the regexp rules
 func ask_numbers_to_test() []string {
 
-	fmt.Println("Digite los números a probar, separados por un espacio.")
-
+	fmt.Println("Digite los números a probar, separados por un espacio. Puedes utilizar . y , para notar el valor decimal")
+	fmt.Println("Por ejemplo: ", string(colorYellow), "4.3 y 4,3", string(colorReset), " son ejemplos válidos para un número real con un decimal de precisión.")
 	scanner := bufio.NewScanner(os.Stdin)
 	scanner.Scan()
   line := scanner.Text()
@@ -53,8 +55,7 @@ func ask_numbers_to_test() []string {
 //function that iterates over every number given by the user and determine if meet the pattern
 func eval_pattern(numbers []string, decimals int) {
 
-	colorYellow := "\033[33m"
-	colorReset := "\033[0m"
+
 
 	if decimals == 0 {
 
@@ -72,7 +73,7 @@ func eval_pattern(numbers []string, decimals int) {
 
 	} else {
 
-		reg_exp := fmt.Sprintf(`^\-?[0-9]+\.[0-9]{%d}$`, decimals)
+		reg_exp := fmt.Sprintf(`^\-?[0-9]+(\.|,)[0-9]{%d}$`, decimals)
 
 		for _, s := range numbers {
 
