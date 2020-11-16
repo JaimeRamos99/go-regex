@@ -14,18 +14,26 @@ func ask_precision_decimals() int {
 
 		fmt.Println("Digite el numero de decimales de precisión que deben tener los números:")
 
-		var n string
-	    _, err := fmt.Scanf("%s", &n)
+		scanner := bufio.NewScanner(os.Stdin)
+		scanner.Scan()
+	  line := scanner.Text()
+		n_args :=len(strings.Fields(line))
 
-		match_int, _ := regexp.MatchString("^[0-9]+$", n)
+		if n_args == 1{
 
-		if err != nil || !match_int {
-			fmt.Println("¡No digitó un entero correcto!")
-			return -1
+			match_int, err := regexp.MatchString("^[0-9]+$", line)
+			if err != nil || !match_int {
+				fmt.Println("¡No digitó un entero correcto!")
+				return -1
+			}
+
+			n_int, _ := strconv.Atoi(line)
+			return n_int
+
 		}
+		fmt.Println("¡No digitó un entero correcto!")
+		return -1
 
-		n_int, _ := strconv.Atoi(n)
-		return n_int
 }
 
 //function that asks the users for the numbers to validate if meets the regexp rules
