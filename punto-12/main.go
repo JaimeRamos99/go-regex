@@ -9,7 +9,7 @@ import (
 
 func main() {
 
-	// Se toma por comando el string a ingresar y el entero X correspondiente a la cantidad de decimales
+	// Se valida si se ingresa algún argumento
 	args := os.Args
 	argsLength := len(args)
 
@@ -17,12 +17,13 @@ func main() {
 		fmt.Println("¡Se necesita por lo menos un numero con n decimales para verificar!")
 
 	} else {
+		// Se toma por comando el string a ingresar y el entero X correspondiente a la cantidad de decimales
 		input := os.Args[1]
 		n := os.Args[2]
 
 		if i, err := strconv.Atoi(n); err == nil {
 
-			// Expresión regular
+			// Expresión regular que verifica si lo ingresado corresponde a una cadena o un número. Si es una cadena (no númerica), debe salirse del programa
 
 			cadena := fmt.Sprintf(`[+-]?([0-9]*[.])?[0-9]+`)
 			verificarCadena := regexp.MustCompile(cadena)
@@ -32,10 +33,14 @@ func main() {
 				return
 			}
 
+			// Verificar que la cantidad de decimales no sea negativa
 			if i < 0 {
 				fmt.Printf("La cantidad de decimales ingresada no puede ser negativa")
 				return
 			}
+
+			// Expresión regular principal, donde se verifica que el número ingresado tiene i cantidad de decimales.
+
 			decimal := fmt.Sprintf(`^-?[0-9]+(?:\.\d{%d,%d})?$`, i, i)
 
 			verificarDecimal := regexp.MustCompile(decimal)
