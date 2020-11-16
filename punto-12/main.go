@@ -30,10 +30,16 @@ func main() {
 			if re.FindString(input) == "" {
 				fmt.Printf("No es un número real o no tiene la cantidad exacta de %d decimales", i)
 			} else {
-				if i == 1 {
-					fmt.Printf(" %v Es un numero real con %d decimal", re.FindString(input), i)
+
+				if len(input) == 1 && i != 0 {
+					fmt.Printf("Es un número real pero no tiene la cantidad exacta de %d decimales", i)
 				} else {
-					fmt.Printf(" %v Es un numero real con %d decimales", re.FindString(input), i) // True
+					if i == 1 {
+						fmt.Printf(" %v Es un numero real con %d decimal", re.FindString(input), i)
+					} else {
+						fmt.Printf(" %v Es un numero real con %d decimales", re.FindString(input), i)
+					}
+
 				}
 
 			}
