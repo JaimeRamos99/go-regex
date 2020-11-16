@@ -41,7 +41,7 @@ func ask_precision_decimals() int {
 //function that asks the users for the numbers to validate if meets the regexp rules
 func ask_numbers_to_test() []string {
 
-	fmt.Println("Digite los números a probar, separados por un espacio. Puedes utilizar . y , para notar el valor decimal")
+	fmt.Println("Digite los números a probar, separados por un espacio. Puedes utilizar",string(colorYellow), ".",string(colorReset), " y ", string(colorYellow), ",", string(colorReset), "para notar el valor decimal")
 	fmt.Println("Por ejemplo: ", string(colorYellow), "4.3 y 4,3", string(colorReset), " son ejemplos válidos para un número real con un decimal de precisión.")
 	scanner := bufio.NewScanner(os.Stdin)
 	scanner.Scan()
