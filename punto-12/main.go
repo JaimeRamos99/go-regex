@@ -18,7 +18,7 @@ func ask_precision_decimals() int {
 
 		scanner := bufio.NewScanner(os.Stdin)
 		scanner.Scan()
-	  line := scanner.Text()
+        line := scanner.Text()
 		n_args := len(strings.Fields(line))
 
 		if n_args == 1{
@@ -45,7 +45,7 @@ func ask_numbers_to_test() []string {
 	fmt.Println("Por ejemplo: ", string(colorYellow), "4.3 y 4,3", string(colorReset), " son ejemplos válidos para un número real con un decimal de precisión.")
 	scanner := bufio.NewScanner(os.Stdin)
 	scanner.Scan()
-  line := scanner.Text()
+    line := scanner.Text()
 
 	cases := strings.Fields(line)
 
